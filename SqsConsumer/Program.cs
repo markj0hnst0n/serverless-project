@@ -20,7 +20,9 @@ var queueUrlResponse = await sqsClient.GetQueueUrlAsync("serverless-project-cust
 
 var receiveMessageRequest = new ReceiveMessageRequest
 {
-	QueueUrl = queueUrlResponse.QueueUrl
+	QueueUrl = queueUrlResponse.QueueUrl,
+	AttributeNames = new List<string> { "All" },
+	MessageAttributeNames = new List<string> { "All" }
 };
 
 while (!cts.IsCancellationRequested)
